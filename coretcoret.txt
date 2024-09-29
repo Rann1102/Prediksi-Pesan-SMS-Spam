@@ -1,0 +1,4 @@
+cara running projek prediksi_spam.ipynb : ke terminal ketik py testing.py
+cara running/pengimplementasikan ke web : http://127.0.0.1:5000/
+
+# pip install -r requirments.txt

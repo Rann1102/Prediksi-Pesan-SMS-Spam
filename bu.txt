@@ -1,0 +1,102 @@
+# ### Uji coba memasukan pesan apakah terdeteksi spam atau ham
+
+# from sklearn.feature_extraction.text import CountVectorizer
+# from sklearn.naive_bayes import MultinomialNB
+
+# # Vectorizing the text data
+# vectorizer = CountVectorizer()
+# X = vectorizer.fit_transform(df['Pesan'])
+# y = df['label']
+
+# # Creating and training the Naive Bayes model on the entire dataset
+# model = MultinomialNB()
+# model.fit(X, y)
+
+# def predict_message(message):
+#     # Transform the input message using the same vectorizer
+#     message_transformed = vectorizer.transform([message])
+    
+#     # Predict using the trained model
+#     prediction = model.predict(message_transformed)
+    
+#     # Return whether the message is ham or spam
+#     if prediction[0] == 0:
+#         return 'Spam'
+#     else:
+#         return 'Ham'
+
+# # Example usage:
+# input_message = input("Enter a message to predict: ")
+# result = predict_message(input_message)
+# print(f"The message is predicted as: {result}")
+# from joblib import dump, load
+
+# # Save the model
+# dump(model, 'model_prediksi_Pesanspam.joblib')
+
+# dump(vectorizer, 'vectorizer.joblib')
+
+# # Mengambil 10 sampel kata unik dari dataset
+# unique_words = list(vectorizer.vocabulary_.keys())[:10]
+# # Menampilkan log probability untuk 10 sampel kata dalam kategori "Spam"
+# print("Log Probability for Spam:")
+# for word in unique_words:
+#     word_idx = vectorizer.vocabulary_.get(word)
+#     log_prob_spam = feature_log_prob[0][word_idx]
+    
+#     print(f"Word: {word}")
+#     print(f"  Log Probability in Spam: {log_prob_spam:.4f}")
+#     print()
+# # Menampilkan log probability untuk 10 sampel kata dalam kategori "Ham"
+# print("Log Probability for Ham:")
+# for word in unique_words:
+#     word_idx = vectorizer.vocabulary_.get(word)
+#     log_prob_ham = feature_log_prob[1][word_idx]
+    
+#     print(f"Word: {word}")
+#     print(f"  Log Probability in Ham: {log_prob_ham:.4f}")
+#     print()
+# from sklearn.feature_extraction.text import CountVectorizer
+# from sklearn.naive_bayes import MultinomialNB
+
+# # Vectorizing the text data
+# vectorizer = CountVectorizer()
+# X = vectorizer.fit_transform(df['Pesan'])
+# y = df['label']
+
+# # Creating and training the Naive Bayes model on the entire dataset
+# model = MultinomialNB()
+# model.fit(X, y)
+# # Function to explain why a message is classified as spam or ham
+# def explain_classification(message):
+#     # Transform the input message using the same vectorizer
+#     message_transformed = vectorizer.transform([message])
+    
+#     # Predict using the trained model
+#     prediction = model.predict(message_transformed)
+    
+#     # Get probability estimates
+#     proba = model.predict_proba(message_transformed)
+    
+#     # Display results
+#     print(f"Predicted category: {'Spam' if prediction[0] == 0 else 'Ham'}")
+#     print(f"Probability of Spam: {proba[0][0]:.4f}")
+#     print(f"Probability of Ham: {proba[0][1]:.4f}")
+    
+#     # Get the log probability of each word in the message for each class
+#     feature_log_prob = model.feature_log_prob_
+#     feature_names = vectorizer.get_feature_names_out()
+#     word_indices = message_transformed.nonzero()[1]
+#     words = [feature_names[idx] for idx in word_indices]
+    
+#     print("\nWord contributions to classification:")
+#     for word in words:
+#         word_idx = vectorizer.vocabulary_.get(word)
+#         log_prob_spam = feature_log_prob[0][word_idx]
+#         log_prob_ham = feature_log_prob[1][word_idx]
+#         print(f"Word: {word}")
+#         print(f"  Log probability in Spam: {log_prob_spam:.4f}")
+#         print(f"  Log probability in Ham: {log_prob_ham:.4f}")
+
+# input_message = "hai sayang, kamu kenapa?"
+# explain_classification(input_message)

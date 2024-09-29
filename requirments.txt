@@ -1,0 +1,8 @@
+pandas
+tensorflow
+matplotlib
+seaborn
+datasets
+transformers
+sklearn
+nltk
